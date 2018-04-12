@@ -1,0 +1,246 @@
+# Outline and results from behavioural experiments
+
+# 1. Mating behaviours with or without spider present:
+
+```{r, include=F, warning=F, echo=F}
+source("../mating_under_predation/Unsafe_Sex_Rcode.R")
+```
+
+## Courtship:
+
+### Proportion of time courting in 15 minutes
+```{r, warning=F}
+#summary(courtship_model1)
+print(gg_courtProp2)
+```
+
+### Number of Courtship Bouts
+
+```{r, warning=F}
+#summary(courtship_model2)
+print(gg_courtcount2)
+```
+
+## Copulation
+
+### Copulation occurance proportion
+```{r, warning=F}
+#summary(copprop_mod)
+print(gg_copprop2)
+```
+
+### Copulation Latency
+```{r, warning=F}
+#summary(copul_lat_mod)
+print(gg_coplat2)
+```
+
+### Copulation Duration
+```{r, warning=F}
+#summary(copul_dur_Mod)
+print(gg_copdur2)
+```
+
+```{r, include=F, warning=FALSE, echo=F}
+rm(list=ls())
+```
+
+
+# 2. Evolved Population Mating Behaviour:
+```{r, include=F, warning=F, echo=F}
+setwd("/Users/paulknoops/Bioinformatics/R-projects_git/LongTermEvolution_Data-Code/PredationCourtship/scripts")
+source('AP_EvolvedPopulationAnalysis.R')
+```
+
+Age Bins correspond to different age range of flies:
+```
+1 = 1–3 days
+2 = 4–7 days
+3 = 8–11 days
+4 = 12–15 days
+```
+
+All behaviours recored without predators present.
+
+### Courtship latency:
+Model:
+```
+mod_court <- lmer(Rel_Court_lat ~ 1 + Treatment*AgeBin + 
+                    (1|Date) + (1|Treatment:Rep), 
+                  data = AP_Data)
+```
+```{r, warning=F}
+#summary(mod_court)
+print(latenCourt2)
+```
+
+### Copulation Latency
+```
+mod_copl_plot <- lmer(Rel_Cop_lat ~ 1+ Treatment*AgeBin + 
+                        (1|Date) + (1|Treatment:Rep), 
+                      data = AP_Data)
+```
+```{r, warning=F}
+#summary(mod_copl_plot)
+print(LatenCop2)
+```
+
+### Copulation Duration: 
+```
+mod_copd_plot <- lmer(Rel_Cop_dur ~ 1+ Treatment*AgeBin + 
+                        (1|Date) + (1|Treatment:Rep), 
+                      data = AP_Data)
+```
+```{r, warning=F}
+#summary(mod_copd_plot)
+print(DuratCop2)
+
+```
+
+### Copulation Occurance (count)
+
+Proportion of copulations occuring in the experimental time
+```
+mod_cop_count <- glmer(Copulation ~ 1 + Treatment*AgeBin + 
+                         (1|Date) + (1|Treatment:Rep), 
+                      family = "binomial", 
+                       data = AP_Data)
+## Did not work:
+                       
+mod_cop_count_glm <- glm(Copulation ~ 1 + Treatment*AgeBin, 
+                         family = "binomial", 
+                         data = AP_Data)
+```
+```{r, warning=F}
+#summary(mod_cop_count_glm)
+print(propCop3)
+```
+
+```{r, include=F, warning=FALSE, echo=F}
+rm(list=ls())
+```
+
+# 3. Activity of evolved and "wild" flies:
+
+Activity measured with the DAM. Plots show the trends in acticity over 24 hours (spline) with light and dark times (light = yellow box).
+
+Also plot of hourly activity in different light phases.
+
+```{r, include=F, warning=F, echo=F}
+setwd('/Users/paulknoops/Bioinformatics/R-projects_git/LongTermEvolution_Data-Code/Predation_ActivityAggregation/scripts')
+source("Analysis_activityData.R")
+source("Activity_allData_Plots.R")
+```
+
+
+### Evolved Population Plots:
+Evolved population activity (with no cues present)
+
+Model:
+```
+mod_trial_2 <- lmer(Hourly_activity ~ sin(hour2) + cos(hour2) + Treatment + Treatment:Population + light + light:Treatment + start_day + monitor
+                        + (1 + light | individual), data=dat.hourly)
+```
+```{r, warning=F}
+#summary(mod_trial_2)
+print(Evolve_plot3)
+print(LT_plot2)
+```
+
+### Exp3: Cricket vs. Spider fed Cricket vs. Fly vs. Spider fed flies
+Complex cues: Two predator treatments based on diet (Spider fed cricket and spdier fed flies) and two controls (crickets and flies).
+
+Model:
+```
+Exp3_mod_spli_2 <- lmer(activity_counts ~ sin(hour2) + cos(hour2) + Treatment*light + monitor
+                        + (1 + light | individual), data=Exp3_hour)
+```
+
+```{r, warning=F}
+#summary(Exp3_mod_spli_2)
+print(Exp3_plot3)
+print(plot_Exp3_2)
+```
+
+
+### Exp 2: Spiders vs. Crickets
+Spider conditioned vials vs. Cricket conditioned vials
+
+Model:
+```
+Exp2_mod_spli_2 <- lmer(activity_counts ~ sin(hour2) + cos(hour2) + Treatment*light + monitor
+                        + (1 + light | individual), data=Exp2_hour)
+```
+```{r, warning=F}
+#summary(Exp2_mod_spli_2)
+
+print(Exp2_plot3)
+
+print(plot_Exp2_2)
+```
+
+
+### Spider vs. Control:
+
+Spider conditioned vials vs. controls
+
+Model:
+```
+spider_mod_spli_2 <- lmer(activity_counts ~ Treatment*light + sin(hour2) + cos(hour2)  + monitor
+                        + (1 + light | individual), data=act_hour)
+```
+
+```{r, warning=F}
+#summary(spider_mod_spli_2)
+print(spider_plot3)
+
+print(spi_plot2)
+
+```
+
+### Mantid vs. Control:
+
+Vials conditioned with Mantid cues compared to control (no cues)
+
+Model:
+```
+mantid_mod_spli_2 <- lmer(activity_counts ~ Treatment*light + sin(hour2) + cos(hour2)  + monitor
+                          + (1 + light | individual), data=Mantid_hour)
+```
+
+```{r, warning=F}
+#summary(mantid_mod_spli_2)
+
+print(mantid_plot3)
+print(Man_plot2)
+```
+
+
+```{r, include=F, warning=FALSE, echo=F}
+rm(list=ls())
+```
+
+
+#3. Light vs. Dark Courtship Behaviour:
+```{r, include=F, warning=F, echo=F}
+setwd("/Users/paulknoops/Bioinformatics/R-projects_git/Reuven_L-D_courtshipEvolvedPop")
+source('/Users/paulknoops/Bioinformatics/R-projects_git/Reuven_L-D_courtshipEvolvedPop/L-D_courtshipAnalysis.R')
+```
+
+Proportion of courtship time in 15 minutes: Light phase vs. Dark phase of the 3 experimental evolution populations.
+
+Model:
+```
+stuff2 <- lmer(P_court ~ Treatment*Phase + Observer + (1|Day) + (1|Treatment:Population), data=court)
+```
+
+```{r, warning=F}
+#summary(stuff2)
+print(stuff_plot3)
+```
+
+```{r, include=F, warning=FALSE, echo=F}
+rm(list=ls())
+```
+
+
