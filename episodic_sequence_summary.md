@@ -1,8 +1,8 @@
-# File with the outline of plots and questions about these first draft of plots
+# File with the outline of plots and questions about these first draft of plots for Sequence paper
 
-# Most Important Questions for Ian:
+# Questions for Ian:
 
-**Below I have a few important questions for my analysis (specifically moving onto SNPeff or Gowinda) and after I have more questions (less important) pertaining to visualization and final plots required.**
+**Below I have a few important questions for my analysis (specifically for moving onto SNPeff or Gowinda). Further down I have the plots with the questions and others pertaining to visualization and final plots required.**
 
 ### 1. Filtering positions for Fst values:
 
@@ -10,21 +10,21 @@
 
   Note: Fst values are windows, so use of comparison with other measures here is to ensure Fst is sufficiently high in window around positions of interest.
 
-  Should I downscale the Fst values with Sel:Sel and Con:Con comparisons? (below are the plots for 115)
+  Should I downscale the Fst values with Sel:Sel and Con:Con comparisons? (below are the plots for 115 Sel:Sel and Con:Con)
     
-     --: Method? (previous ideas were (Fst_C:C + Fst_S:S)/2 for scaling)
+     -- Method? (previous ideas were (Fst_C:C + Fst_S:S)/2 for scaling)
   
 ### 2. Adjusting P values: Chromosome OR full genome ??
   
   When performing p.adjust, should the adjustments be for the full genome (all positions) or on a per chromosome basis?
   
-    -- Currently have to do per chromo for poolseq and am doing full genome for model output.
+    -- Currently am doing full genome, but not sure if this should be a per Chromosome adjustment
 
 ### 3. Bonferroni vs. Fdr:
 
 **Fdr adjustment for p-values keeps more positions but Bonferroni gives more visually appealling plots (see below) and more accuracy for positions**
 
-  For plots of outputs: would Bonferroni plots be better?
+  For plots: would Bonferroni plots be better?
   
   For finding positions of interest: is FDR still prefered better?
   
@@ -66,12 +66,13 @@ The ancestral nucleotide diversity:
    
     -- Do we want overlay plots with ~splines showing the change in diversity from Ancestor --> 115?
 
+____________________________________________________________________________
 
 ## Fst Plots:
 
 ### Outline
 
-Average pairwise Fst between control and selection replicates
+Average  pairwise Fst between control and selection replicates
 
   -- Average b/w mappers and replicates
 
@@ -93,8 +94,10 @@ Average pairwise Fst between control and selection replicates
   ___________________________________________________
 **meanFst: Selection vs. Control: Generation115**
 ![meanFst for F115](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/F115_meanFstPlot.png)
+
 **meanFst: Control vs. Control: Generation115**
 ![Fst_Con:Con_115](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/F115_Control:Control_FST.png)
+
 **meanFst: Selection vs. Selection: Generation115**
 ![Fst_Sel:Sel_115](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/F115_Selection:Selection_FST.png)
 ____________________________________________________
@@ -105,14 +108,19 @@ ____________________________________________________
     
     -- Should I keep the top 50%? the top 10% Fst values?
 
+____________________________________________________________________________
+
 ## Model Outputs
 
 ### Outline
 
 Plots for original values and FDR adjusted
 
+-- Sizing is a bit off (differently saved, but these are still rough until I know the final plan)
+
 **None corrected P values: TxG -log10(meanP-value)**
 ![FullGenomeTxGPlot](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/CHROMO_meanP.png)
+
 
 **FDR Corrected P-values: TxG -log10(meanP-value)**
 ![FDRcorrection](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/Fdr_adjustP.png)
@@ -128,6 +136,7 @@ Plots for original values and FDR adjusted
   
   ![Coloured Sig](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/fdr_bonf_adjustP_sigColoured.png)
   
+____________________________________________________________________________
 
 ## Poolseq outputs:
 
@@ -135,11 +144,13 @@ Plots for original values and FDR adjusted
 
 Output from PoolSeq package: the significant selection coeffients that were significant for Predation lines and not for controls
 
-Ongoing with the slow pace of Poolseq: 3L and 3R almost completed
+Ongoing with the slow pace of Poolseq: almost complete (just the 4th and X chomosome left for BWA and X for novoalign)
 
 This is the average b/w two mappers (bwa and novoalign), keeping the least significant pvalue.
 
-![poolseq_2L](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/Chromo_2_selcoef.png)
+Note: below 4th and 3R are only from Novoalign (have not gotton to combine the Bwa ones yet).
+
+![poolseq_2L-4_D1](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/selcoeff_2L-4_D1.png)
 
 ### Questions
 
@@ -147,6 +158,9 @@ This is the average b/w two mappers (bwa and novoalign), keeping the least signi
 
 2. Any cut off for selection coefficients or just any significant selection coefficients unique to predator lines?
 
+3. Overlay positions with selection coefficients onto model outputs.
+
+____________________________________________________________________________
 
 ## Trajectories and positions:
  
