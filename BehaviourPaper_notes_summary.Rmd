@@ -10,14 +10,14 @@ source("../mating_under_predation/Unsafe_Sex_Rcode.R")
 
 ### Proportion of time courting in 15 minutes
 ```{r, warning=F}
-summary(courtship_model1)
+#summary(courtship_model1)
 print(gg_courtProp2)
 ```
 
 ### Number of Courtship Bouts
 
 ```{r, warning=F}
-summary(courtship_model2)
+#summary(courtship_model2)
 print(gg_courtcount2)
 ```
 
@@ -25,19 +25,19 @@ print(gg_courtcount2)
 
 ### Copulation occurance proportion
 ```{r, warning=F}
-summary(copprop_mod)
+#summary(copprop_mod)
 print(gg_copprop2)
 ```
 
 ### Copulation Latency
 ```{r, warning=F}
-summary(copul_lat_mod)
+#summary(copul_lat_mod)
 print(gg_coplat2)
 ```
 
 ### Copulation Duration
 ```{r, warning=F}
-summary(copul_dur_Mod)
+#summary(copul_dur_Mod)
 print(gg_copdur2)
 ```
 
@@ -70,7 +70,7 @@ mod_court <- lmer(Rel_Court_lat ~ 1 + Treatment*AgeBin +
                   data = AP_Data)
 ```
 ```{r, warning=F}
-summary(mod_court)
+#summary(mod_court)
 print(latenCourt2)
 ```
 
@@ -81,7 +81,7 @@ mod_copl_plot <- lmer(Rel_Cop_lat ~ 1+ Treatment*AgeBin +
                       data = AP_Data)
 ```
 ```{r, warning=F}
-summary(mod_copl_plot)
+#summary(mod_copl_plot)
 print(LatenCop2)
 ```
 
@@ -92,7 +92,7 @@ mod_copd_plot <- lmer(Rel_Cop_dur ~ 1+ Treatment*AgeBin +
                       data = AP_Data)
 ```
 ```{r, warning=F}
-summary(mod_copd_plot)
+#summary(mod_copd_plot)
 print(DuratCop2)
 
 ```
@@ -112,7 +112,7 @@ mod_cop_count_glm <- glm(Copulation ~ 1 + Treatment*AgeBin,
                          data = AP_Data)
 ```
 ```{r, warning=F}
-summary(mod_cop_count_glm)
+#summary(mod_cop_count_glm)
 print(propCop3)
 ```
 
@@ -142,7 +142,7 @@ mod_trial_2 <- lmer(Hourly_activity ~ sin(hour2) + cos(hour2) + Treatment + Trea
                         + (1 + light | individual), data=dat.hourly)
 ```
 ```{r, warning=F}
-summary(mod_trial_2)
+#summary(mod_trial_2)
 print(Evolve_plot3)
 print(LT_plot2)
 ```
@@ -157,7 +157,7 @@ Exp3_mod_spli_2 <- lmer(activity_counts ~ sin(hour2) + cos(hour2) + Treatment*li
 ```
 
 ```{r, warning=F}
-summary(Exp3_mod_spli_2)
+#summary(Exp3_mod_spli_2)
 print(Exp3_plot3)
 print(plot_Exp3_2)
 ```
@@ -172,7 +172,7 @@ Exp2_mod_spli_2 <- lmer(activity_counts ~ sin(hour2) + cos(hour2) + Treatment*li
                         + (1 + light | individual), data=Exp2_hour)
 ```
 ```{r, warning=F}
-summary(Exp2_mod_spli_2)
+#summary(Exp2_mod_spli_2)
 
 print(Exp2_plot3)
 
@@ -191,7 +191,7 @@ spider_mod_spli_2 <- lmer(activity_counts ~ Treatment*light + sin(hour2) + cos(h
 ```
 
 ```{r, warning=F}
-summary(spider_mod_spli_2)
+#summary(spider_mod_spli_2)
 print(spider_plot3)
 
 print(spi_plot2)
@@ -209,7 +209,7 @@ mantid_mod_spli_2 <- lmer(activity_counts ~ Treatment*light + sin(hour2) + cos(h
 ```
 
 ```{r, warning=F}
-summary(mantid_mod_spli_2)
+#summary(mantid_mod_spli_2)
 
 print(mantid_plot3)
 print(Man_plot2)
@@ -235,7 +235,7 @@ stuff2 <- lmer(P_court ~ Treatment*Phase + Observer + (1|Day) + (1|Treatment:Pop
 ```
 
 ```{r, warning=F}
-summary(stuff2)
+#summary(stuff2)
 print(stuff_plot3)
 ```
 
