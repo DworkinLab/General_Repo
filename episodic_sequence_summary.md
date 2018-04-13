@@ -154,11 +154,13 @@ Note: below 4th and 3R are only from Novoalign (have not gotton to combine the B
 
 ### Questions
 
-1. Plot like above (and all chromo eventually)? 
+1. Does another full chomosome plot (same colours) work for these, like above? 
 
 2. Any cut off for selection coefficients or just any significant selection coefficients unique to predator lines?
 
-3. Overlay positions with selection coefficients onto model outputs.
+3. Overlay positions with selection coefficients onto model outputs?
+
+![overlaySelcoef and model](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/overlay_2L-4_model_selcoef.png)
 
 ____________________________________________________________________________
 
@@ -174,8 +176,39 @@ ____________________________________________________________________________
  
  -- Then found any overlapping windows with these positions with Fst values != 0. 
  
-  Ended up with ~400 positions for both 2L and 2R each
- 
+ Tentative positions overlapping based on this criteria (will change with additional chromosomes/mappers completing poolseq):
+ **2L**
+```
+With Bonferroni: 50 positions
+With FDR: 378 positions
+```
+**2R**
+```
+With Bonferroni: 110 positions
+With FDR: 504 positions
+```
+**3L**
+```
+With Bonferroni: 15 positions
+With FDR: 71 positions
+```
+**3R**
+```
+With Bonferroni: 24 positions
+With FDR: 270 positions
+```
+**4**
+```
+With Bonferroni: 1 positions
+With FDR: 2 positions
+```
+**X** 
+Not complete
+```
+With Bonferroni:  positions
+With FDR:  positions
+```
+
  Trajectories are the mean absolute difference the treatments had from the ancestor
  
  ![Trajectory_2ndChromo](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/Trajectory_diff_2Chromo.png)
@@ -186,19 +219,12 @@ ____________________________________________________________________________
 
   -- Is it informative to select some large peaked positions that are shared and show the actual trajectories of frequencies?
 
-2. Overlay the postions of interest onto the output from the model:  
+2. Overlay the postions of interest onto the output from the model:  (like above but with positions overlapping Fst windows as well?)
 
-  -- Most interesting plot would be the -log10(p) plot from model, should the positions present from Poolseq and Fst be coloured and used as well?
   
-  -- larger and coloured positions on the model output for example: 
-  
-  2L with FDR:
+  2L with FDR: 1st draft, initial (wrong) screen for positions overlapping all three)
   
 ![FDR_col](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/colouredPositions2L_Practice.png)
-  
-  2L with Bonferroni:
-  
-![bonfCOL](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/positions_2L_Bonferonii_Prac.png)
   
   
 
