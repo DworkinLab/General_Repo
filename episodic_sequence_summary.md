@@ -121,7 +121,6 @@ Plots for original values and FDR adjusted
 **None corrected P values: TxG -log10(meanP-value)**
 ![FullGenomeTxGPlot](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/CHROMO_meanP.png)
 
-
 **FDR Corrected P-values: TxG -log10(meanP-value)**
 ![FDRcorrection](https://github.com/PaulKnoops/episodicSequenceData/blob/master/Analysis_after_sync_2018_plots/Fdr_adjustP.png)
 
